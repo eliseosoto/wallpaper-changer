@@ -1,6 +1,7 @@
 package com.supervaca.wallpaperChanger;
 
 import android.app.Activity;
+import android.app.WallpaperManager;
 import android.graphics.Bitmap;
 import android.graphics.Matrix;
 import android.graphics.drawable.BitmapDrawable;
@@ -15,18 +16,20 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        BitmapDrawable wallpaper = (BitmapDrawable) getApplicationContext().getWallpaper();
-        Log.i("wallpaperChanger", "Setting wallpaper");
+        WallpaperManager wallpaperManager = WallpaperManager.getInstance(getApplicationContext());
+        Drawable wallpaper = wallpaperManager.getDrawable();
+        Log.i("wallpaperChanger", wallpaper.toString());
 
         // Rotate the wallpaper upside down.
-        int width = wallpaper.getBitmap().getWidth();
-        int height = wallpaper.getBitmap().getHeight();
+        int width = wallpaper.getIntrinsicWidth();
+        int height = wallpaper.getIntrinsicHeight();
 
         // Create matrix for manipulation
         Matrix matrix = new Matrix();
         matrix.postRotate(180);
 
-        Bitmap newWallpaper = Bitmap.createBitmap(wallpaper.getBitmap(), 0, 0, width, height, matrix, true);
+        Bitmap bitmap = ((BitmapDrawable) wallpaper).getBitmap();
+        Bitmap newWallpaper = Bitmap.createBitmap(bitmap, 0, 0, width, height, matrix, true);
 
         try {
             getApplicationContext().setWallpaper(newWallpaper);
