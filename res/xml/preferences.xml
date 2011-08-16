@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <CheckBoxPreference
+            android:key="service_active"
+            android:defaultValue="true"
+            android:title="Background updates"
+            android:summary="Check to activate the wallpaper changer"/>
+
+    <ListPreference
+            android:key="default_list"
+            android:defaultValue="10"
+            android:title="Update Interval"
+            android:summary="How often do you want to change your wallpaper?"
+            android:entries="@array/update_interval_entries_list_preference"
+            android:entryValues="@array/update_interval_values_list_preference"
+            android:dialogTitle="Select an interval"/>
+</PreferenceScreen>

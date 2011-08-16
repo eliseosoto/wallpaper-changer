@@ -1,0 +1,13 @@
+<resources>
+    <string-array name="update_interval_entries_list_preference">
+        <item>1 minute</item>
+        <item>10 minutes</item>
+        <item>1 Hour</item>
+    </string-array>
+
+    <string-array name="update_interval_values_list_preference">
+        <item>1</item>
+        <item>10</item>
+        <item>60</item>
+    </string-array>
+</resources>
