@@ -19,5 +19,11 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+
+        <service android:enabled="true" android:name=".WallpaperService">
+            <intent-filter>
+                <action android:name="com.supervaca.wallpaperChanger.REFRESH_WALLPAPER"/>
+            </intent-filter>
+        </service>
     </application>
 </manifest>
