@@ -28,4 +28,12 @@ public class WallpaperService extends Service {
 
         return Service.START_NOT_STICKY;
     }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+
+        String text = "WallpaperService stopped!";
+        Toast.makeText(getApplicationContext(), text, Toast.LENGTH_SHORT).show();
+    }
 }

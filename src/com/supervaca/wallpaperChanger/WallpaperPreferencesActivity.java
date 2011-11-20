@@ -54,11 +54,14 @@ public class WallpaperPreferencesActivity extends PreferenceActivity implements 
             updateIntervalListPref.setSummary(sharedPreferences.getString(key, ""));
         } else if (key.equals(SERVICE_ACTIVE)) {
             Log.i("wallpaperChanger", serviceActiveCheckBoxPref.isChecked() + "");
+            Intent myIntent = new Intent(WallpaperService.REFRESH_WALLPAPER);
 
             if (serviceActiveCheckBoxPref.isChecked()) {
-                // Implicitly start a Service
-                Intent myIntent = new Intent(WallpaperService.REFRESH_WALLPAPER);
+                // Implicitly start the Service
                 startService(myIntent);
+            } else {
+                // Implicitly stop the Service
+                stopService(myIntent);
             }
         }
     }
