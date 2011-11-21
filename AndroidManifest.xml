@@ -21,7 +21,7 @@
             </intent-filter>
         </activity>
 
-        <service android:enabled="true" android:name=".WallpaperService">
+        <service android:enabled="true" android:name=".WallpaperService" android:process=":remote">
             <intent-filter>
                 <action android:name="com.supervaca.wallpaperChanger.REFRESH_WALLPAPER"/>
             </intent-filter>

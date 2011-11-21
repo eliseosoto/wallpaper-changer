@@ -1,8 +1,11 @@
 package com.supervaca.wallpaperChanger;
 
+import android.app.AlarmManager;
+import android.app.PendingIntent;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.preference.CheckBoxPreference;
 import android.preference.ListPreference;
 import android.preference.PreferenceActivity;
@@ -54,14 +57,23 @@ public class WallpaperPreferencesActivity extends PreferenceActivity implements 
             updateIntervalListPref.setSummary(sharedPreferences.getString(key, ""));
         } else if (key.equals(SERVICE_ACTIVE)) {
             Log.i("wallpaperChanger", serviceActiveCheckBoxPref.isChecked() + "");
-            Intent myIntent = new Intent(WallpaperService.REFRESH_WALLPAPER);
+
+            // Create the intents
+            Intent intent = new Intent(WallpaperService.REFRESH_WALLPAPER);
+            PendingIntent pendingIntent = PendingIntent.getService(WallpaperPreferencesActivity.this, 0, intent, 0);
+
+            // Schedule the alarm!
+            long firstTime = SystemClock.elapsedRealtime();
+            AlarmManager am = (AlarmManager) getSystemService(ALARM_SERVICE);
 
             if (serviceActiveCheckBoxPref.isChecked()) {
-                // Implicitly start the Service
-                startService(myIntent);
+                // Schedule the alarm
+                am.setInexactRepeating(AlarmManager.ELAPSED_REALTIME, firstTime, 30 * 1000, pendingIntent);
             } else {
                 // Implicitly stop the Service
-                stopService(myIntent);
+                stopService(intent);
+                // Cancel the alarm
+                am.cancel(pendingIntent);
             }
         }
     }
