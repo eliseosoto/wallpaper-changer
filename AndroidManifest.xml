@@ -20,6 +20,13 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+        
+        <activity android:label="Folder Selector" android:name="com.lamerman.FileDialogWithDirectories">
+            <intent-filter>
+                <category android:name="android.intent.category.DEFAULT" />
+                <action android:name="com.lamerman.FileDialog.SELECT_DIRECTORY"/>
+            </intent-filter>
+        </activity>
 
         <service android:enabled="true" android:name=".WallpaperService" android:process=":remote">
             <intent-filter>

@@ -3,4 +3,17 @@
     <!-- Directory Selection Dialog -->
     <string name="directory_selection_title">Select Folder</string>
     
+    <!-- Directory selection -->
+    <string name="location">Location</string>
+    <string name="cant_read_folder">folder can\'t be read!</string>
+    <string name="nnew">New</string>
+    <string name="select">Select</string>
+    <string name="file_name">File name:</string>
+    <string name="cancel">Cancel</string>
+    <string name="create">Save</string>
+    <string name="no_data">No Data</string>
+    <string name="fd_path">Folder</string>
+    <string name="fd_cant_read_folder">Can\'t read folder</string>
+    <string name="fd_error">folder error</string>
+	<color name="gray">#ffff0000</color>
 </resources>

@@ -16,12 +16,11 @@
         android:summary="How often do you want to change your wallpaper?"
         android:title="Update Interval" />
 
-    <com.supervaca.wallpaperChanger.DirectoryPreference android:title="@string/directory_selection_title" />
-
     <Preference android:title="Testing Intent" >
-        <intent
-            android:action="android.intent.action.VIEW"
-            android:data="http://www.android.com" />
+        <intent android:action="com.lamerman.FileDialog.SELECT_DIRECTORY" >
+            <extra android:name="SELECTION_MODE" android:value="1" />
+            <extra android:name="CAN_SELECT_DIR" android:value="true" />
+        </intent>
     </Preference>
 
 </PreferenceScreen>
