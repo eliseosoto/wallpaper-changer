@@ -1,18 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
 
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
     <CheckBoxPreference
-            android:key="SERVICE_ACTIVE"
-            android:defaultValue="false"
-            android:title="Background updates"
-            android:summary="Check to activate the wallpaper changer"/>
+        android:defaultValue="false"
+        android:key="SERVICE_ACTIVE"
+        android:summary="Check to activate the wallpaper changer"
+        android:title="Background updates" />
 
     <ListPreference
-            android:key="UPDATE_INTERVAL"
-            android:defaultValue="1"
-            android:title="Update Interval"
-            android:summary="How often do you want to change your wallpaper?"
-            android:entries="@array/update_interval_entries_list_preference"
-            android:entryValues="@array/update_interval_values_list_preference"
-            android:dialogTitle="Select an interval"/>
+        android:defaultValue="1"
+        android:dialogTitle="Select an interval"
+        android:entries="@array/update_interval_entries_list_preference"
+        android:entryValues="@array/update_interval_values_list_preference"
+        android:key="UPDATE_INTERVAL"
+        android:summary="How often do you want to change your wallpaper?"
+        android:title="Update Interval" />
+
+    <com.supervaca.wallpaperChanger.DirectoryPreference android:title="@string/directory_selection_title" />
+
+    <Preference android:title="Testing Intent" >
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:data="http://www.android.com" />
+    </Preference>
+
 </PreferenceScreen>
