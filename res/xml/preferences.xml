@@ -4,7 +4,8 @@
     <CheckBoxPreference
         android:defaultValue="false"
         android:key="SERVICE_ACTIVE"
-        android:summary="@string/service_active_summary"
+        android:summaryOn="@string/service_active_summary_on"
+        android:summaryOff="@string/service_active_summary_off"
         android:title="@string/service_active_title" />
 
     <ListPreference
@@ -13,7 +14,6 @@
         android:entries="@array/update_interval_entries_list_preference"
         android:entryValues="@array/update_interval_values_list_preference"
         android:key="UPDATE_INTERVAL"
-        android:summary="@string/update_interval_summary"
         android:title="@string/update_interval_title" />
 
     <Preference android:title="Testing Intent" >

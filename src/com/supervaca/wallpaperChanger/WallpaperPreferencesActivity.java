@@ -18,7 +18,6 @@ public class WallpaperPreferencesActivity extends PreferenceActivity implements 
     private ListPreference updateIntervalListPref;
     private CheckBoxPreference serviceActiveCheckBoxPref;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,7 +37,7 @@ public class WallpaperPreferencesActivity extends PreferenceActivity implements 
         SharedPreferences sharedPreferences = getPreferenceScreen().getSharedPreferences();
 
         // Setup the initial values
-        updateIntervalListPref.setSummary(sharedPreferences.getString(UPDATE_INTERVAL, ""));
+        updateIntervalListPref.setSummary(updateIntervalListPref.getEntry());
 
         // Set up a listener whenever a key changes
         sharedPreferences.registerOnSharedPreferenceChangeListener(this);
@@ -54,7 +53,7 @@ public class WallpaperPreferencesActivity extends PreferenceActivity implements 
 
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
         if (key.equals(UPDATE_INTERVAL)) {
-            updateIntervalListPref.setSummary(sharedPreferences.getString(key, ""));
+            updateIntervalListPref.setSummary(updateIntervalListPref.getEntry());
         } else if (key.equals(SERVICE_ACTIVE)) {
             Log.i("wallpaperChanger", serviceActiveCheckBoxPref.isChecked() + "");
 
