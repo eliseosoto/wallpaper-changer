@@ -1,5 +1,13 @@
 <resources>
     <string name="app_name">wallpaper-changer</string>
+    
+    <!--  Preferences Screen -->
+    <string name="service_active_title">Background updates</string>
+    <string name="service_active_summary">Check to activate the Wallpaper Changer</string>
+    <string name="update_interval_title">Update Interval</string>
+    <string name="update_interval_summary">How often do you want to change your wallpaper?</string>
+    <string name="update_interval_dialog_title">Select an interval</string>
+    
     <!-- Directory Selection Dialog -->
     <string name="directory_selection_title">Select Folder</string>
     
