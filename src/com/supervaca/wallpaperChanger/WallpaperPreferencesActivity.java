@@ -40,19 +40,18 @@ public class WallpaperPreferencesActivity extends PreferenceActivity implements 
         
         // Manually add a listener to selectDirectoryPreference, this is the only way to
         // invoke startActivityForResult and pass the right extras
-        OnPreferenceClickListener opcl = new OnPreferenceClickListener() {
+		selectedDirectoryPreference.setOnPreferenceClickListener(new OnPreferenceClickListener() {
 			@Override
 			public boolean onPreferenceClick(Preference preference) {
 				Intent intent = new Intent(getBaseContext(), FileDialogWithDirectories.class);
-                intent.putExtra(FileDialogWithDirectories.CAN_SELECT_DIR, true);
-                intent.putExtra(FileDialogWithDirectories.SELECTION_MODE, SelectionMode.MODE_OPEN);
-                
-                startActivityForResult(intent, SELECT_DIRECTORY_RESULT);
-                
+				intent.putExtra(FileDialogWithDirectories.CAN_SELECT_DIR, true);
+				intent.putExtra(FileDialogWithDirectories.SELECTION_MODE, SelectionMode.MODE_OPEN);
+
+				startActivityForResult(intent, SELECT_DIRECTORY_RESULT);
+
 				return true;
 			}
-		};
-        selectedDirectoryPreference.setOnPreferenceClickListener(opcl);
+		});
     }
 
     @Override
