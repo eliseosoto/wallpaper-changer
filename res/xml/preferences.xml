@@ -1,18 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
 
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
     <CheckBoxPreference
-            android:key="SERVICE_ACTIVE"
-            android:defaultValue="false"
-            android:title="Background updates"
-            android:summary="Check to activate the wallpaper changer"/>
+        android:defaultValue="false"
+        android:key="SERVICE_ACTIVE"
+        android:summaryOn="@string/service_active_summary_on"
+        android:summaryOff="@string/service_active_summary_off"
+        android:title="@string/service_active_title" />
 
     <ListPreference
-            android:key="UPDATE_INTERVAL"
-            android:defaultValue="1"
-            android:title="Update Interval"
-            android:summary="How often do you want to change your wallpaper?"
-            android:entries="@array/update_interval_entries_list_preference"
-            android:entryValues="@array/update_interval_values_list_preference"
-            android:dialogTitle="Select an interval"/>
+        android:defaultValue="1"
+        android:dialogTitle="@string/update_interval_dialog_title"
+        android:entries="@array/update_interval_entries_list_preference"
+        android:entryValues="@array/update_interval_values_list_preference"
+        android:key="UPDATE_INTERVAL"
+        android:title="@string/update_interval_title" />
+
+    <!-- Manually implemented in WallpaperPreferencesActivity -->
+    <Preference
+        android:key="SELECTED_DIRECTORY"
+        android:title="@string/directory_selection_title" >
+    </Preference>
+    
 </PreferenceScreen>
