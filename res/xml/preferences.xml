@@ -16,15 +16,10 @@
         android:key="UPDATE_INTERVAL"
         android:title="@string/update_interval_title" />
 
-    <Preference android:title="Testing Intent" >
-        <intent android:action="com.lamerman.FileDialog.SELECT_DIRECTORY" >
-            <extra
-                android:name="SELECTION_MODE"
-                android:value="1" />
-            <extra
-                android:name="CAN_SELECT_DIR"
-                android:value="true" />
-        </intent>
+    <!-- Manually implemented in WallpaperPreferencesActivity -->
+    <Preference
+        android:key="SELECTED_DIRECTORY"
+        android:title="@string/directory_selection_title" >
     </Preference>
-
+    
 </PreferenceScreen>

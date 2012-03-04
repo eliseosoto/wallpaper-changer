@@ -10,6 +10,7 @@
     
     <!-- Directory Selection Dialog -->
     <string name="directory_selection_title">Select Folder</string>
+    <string name="directory_selection_none_selected">No Folder Selected</string>
     
     <!-- Directory selection -->
     <string name="location">Location</string>
