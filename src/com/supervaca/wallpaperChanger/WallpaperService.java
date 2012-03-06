@@ -1,8 +1,13 @@
 package com.supervaca.wallpaperChanger;
 
+import java.io.File;
+import java.util.Random;
+
 import android.app.Service;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.IBinder;
+import android.preference.PreferenceManager;
 import android.widget.Toast;
 
 public class WallpaperService extends Service {
@@ -22,9 +27,10 @@ public class WallpaperService extends Service {
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         // Launch background thread
+    	String imageFileName = pickRandomFileFromDirectory();
 
         //stopSelf(startId);
-        Toast.makeText(getApplicationContext(), "onStartCommand!", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(), imageFileName, Toast.LENGTH_SHORT).show();
 
         return Service.START_NOT_STICKY;
     }
@@ -35,5 +41,17 @@ public class WallpaperService extends Service {
 
         String text = "WallpaperService stopped!";
         Toast.makeText(getApplicationContext(), text, Toast.LENGTH_SHORT).show();
+    }
+    
+    private String pickRandomFileFromDirectory() {
+    	SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+    	String selectedDirectory = prefs.getString("SELECTED_DIRECTORY", "");
+    	
+    	File file = new File(selectedDirectory);
+    	File[] files = file.listFiles();
+    	
+    	Random rand = new Random();
+    	
+    	return files[rand.nextInt(files.length)].getName();
     }
 }
