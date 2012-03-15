@@ -92,8 +92,10 @@ public class WallpaperPreferencesActivity extends PreferenceActivity implements 
             AlarmManager am = (AlarmManager) getSystemService(ALARM_SERVICE);
 
             if (serviceActiveCheckBoxPref.isChecked()) {
+            	Long refreshIntervalMs = Long.parseLong(sharedPreferences.getString(UPDATE_INTERVAL, "0"));
+            	Log.d("refreshIntervalMs", refreshIntervalMs.toString());
                 // Schedule the alarm
-                am.setInexactRepeating(AlarmManager.ELAPSED_REALTIME, firstTime, 30 * 1000, pendingIntent);
+				am.setInexactRepeating(AlarmManager.ELAPSED_REALTIME, firstTime, refreshIntervalMs, pendingIntent);
             } else {
                 // Implicitly stop the Service
                 stopService(intent);
