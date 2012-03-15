@@ -13,6 +13,7 @@
         android:dialogTitle="@string/update_interval_dialog_title"
         android:entries="@array/update_interval_entries_list_preference"
         android:entryValues="@array/update_interval_values_list_preference"
+        android:numeric="integer"
         android:key="UPDATE_INTERVAL"
         android:title="@string/update_interval_title" />
 
