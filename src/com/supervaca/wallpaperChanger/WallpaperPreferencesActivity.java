@@ -85,7 +85,7 @@ public class WallpaperPreferencesActivity extends PreferenceActivity implements 
 
             // Create the intents
             Intent intent = new Intent(WallpaperService.REFRESH_WALLPAPER);
-            PendingIntent pendingIntent = PendingIntent.getService(WallpaperPreferencesActivity.this, 0, intent, 0);
+            PendingIntent pendingIntent = PendingIntent.getService(WallpaperPreferencesActivity.this, 0, intent, PendingIntent.FLAG_CANCEL_CURRENT);
 
             // Schedule the alarm!
             long firstTime = SystemClock.elapsedRealtime();
