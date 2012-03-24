@@ -41,6 +41,7 @@ public class WallpaperService extends Service {
 		}
 
 		Toast.makeText(getApplicationContext(), imageFile.getName(), Toast.LENGTH_SHORT).show();
+		stopSelf();
 
 		return Service.START_NOT_STICKY;
 	}
