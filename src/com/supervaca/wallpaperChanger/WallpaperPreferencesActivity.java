@@ -97,8 +97,6 @@ public class WallpaperPreferencesActivity extends PreferenceActivity implements 
                 // Schedule the alarm
 				am.setInexactRepeating(AlarmManager.ELAPSED_REALTIME, firstTime, refreshIntervalMs, pendingIntent);
             } else {
-                // Implicitly stop the Service
-                stopService(intent);
                 // Cancel the alarm
                 am.cancel(pendingIntent);
             }
