@@ -59,6 +59,8 @@ public class WallpaperPreferencesActivity extends PreferenceActivity implements 
 		super.onResume();
 
 		SharedPreferences sharedPreferences = getPreferenceScreen().getSharedPreferences();
+		
+		updatePreferencesEnabled();
 
 		// Setup the initial values
 		updateIntervalListPref.setSummary(updateIntervalListPref.getEntry());
@@ -67,6 +69,19 @@ public class WallpaperPreferencesActivity extends PreferenceActivity implements 
 
 		// Set up a listener whenever a key changes
 		sharedPreferences.registerOnSharedPreferenceChangeListener(this);
+	}
+
+    /**
+     * Enable/disable serviceActive if an interval or directory has not been selected yet. 
+     */
+	private void updatePreferencesEnabled() {
+		SharedPreferences sharedPreferences = getPreferenceScreen().getSharedPreferences();
+		
+		if(sharedPreferences.getString(SELECTED_DIRECTORY, "").equals("") || updateIntervalListPref.getValue().equals("")) {
+			serviceActiveCheckBoxPref.setEnabled(false);
+		} else {
+			serviceActiveCheckBoxPref.setEnabled(true);
+		}
 	}
 
     @Override
@@ -80,6 +95,7 @@ public class WallpaperPreferencesActivity extends PreferenceActivity implements 
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
         if (key.equals(UPDATE_INTERVAL)) {
             updateIntervalListPref.setSummary(updateIntervalListPref.getEntry());
+            updatePreferencesEnabled();
         } else if (key.equals(SERVICE_ACTIVE)) {
             Log.i("wallpaperChanger", serviceActiveCheckBoxPref.isChecked() + "");
 
@@ -101,6 +117,7 @@ public class WallpaperPreferencesActivity extends PreferenceActivity implements 
                 am.cancel(pendingIntent);
             }
         } else if (key.equals(SELECTED_DIRECTORY)) {
+        	updatePreferencesEnabled();
         	selectedDirectoryPreference.setSummary(sharedPreferences.getString(SELECTED_DIRECTORY,
     				getText(R.string.directory_selection_none_selected).toString()));
         }
